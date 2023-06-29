@@ -5,6 +5,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { SharedModule } from '../shared/shared.module';
 import { CreateListComponent } from './create-list/create-list.component';
+import { CategoryCardComponent } from './category-card/category-card.component';
 
 
 
@@ -13,7 +14,8 @@ import { CreateListComponent } from './create-list/create-list.component';
     TaskComponent,
     TaskListComponent,
     CreateTaskComponent,
-    CreateListComponent
+    CreateListComponent,
+    CategoryCardComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { CreateListComponent } from './create-list/create-list.component';
     TaskComponent,
     TaskListComponent,
     CreateTaskComponent,
-    CreateListComponent
+    CreateListComponent,
+    CategoryCardComponent
   ]
 })
 export class TasksModule { }
