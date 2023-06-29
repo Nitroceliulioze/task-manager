@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TaskInterface } from '../task-interface';
 
+
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',

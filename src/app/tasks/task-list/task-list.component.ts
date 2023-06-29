@@ -12,4 +12,8 @@ export class TaskListComponent {
     { taskTitle: 'Task 2', taskDate: '03/17/2023' },
     { taskTitle: 'Task 3', taskDate: '01/17/2023' },
   ];
+
+  onTaskAcion():void {
+    console.log('Task Action clicked')
+  }
 }
