@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="flex justify-end mx-4">
+  <app-button buttonText="View all taks" (buttonAction)="openTaskList()"></app-button>
+  <app-button
+    class=""
+    (buttonAction)="openCreateTask()"
+    buttonIcon="fas fa-plus-circle"
+    buttonText="Create new task"
+    buttonColor="rgb(243 232 255)"
+  ></app-button>
+</div>
+<app-task-list></app-task-list>
+
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>

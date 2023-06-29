@@ -3,9 +3,11 @@ button {
     display: flex;
     gap: 10px;
     border: 1px solid rgb(243 232 255);
-    background-color: rgb(243 232 255);
-    padding: 10px 40px;
+    background-color: white;
+    padding: 10px 20px;
     border-radius: 25px;
     text-align: center;
-    line-height: 30px;
+}
+i {
+    font-size: 24px;  
 }
