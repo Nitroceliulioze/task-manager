@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="flex justify-end mx-4">
   <app-button buttonText="View all taks" (buttonAction)="openTaskList()"></app-button>
   <app-button
@@ -9,12 +8,8 @@
     buttonColor="rgb(243 232 255)"
   ></app-button>
 </div>
-<app-create-task *ngIf="isCreateTaskOpen"></app-create-task>
+<app-create-task *ngIf="isCreateTaskOpen" (closeDialog)="closeDialog()" (onCloseDialog)="closeDialog()"></app-create-task>
 <div class="flex flex-wrap">
-
   <app-category-card *ngFor="let item of categoryTitle" [categoryTitle]="item" countListItems={{tasks.length}} (categoryCardAction)="openCategoryList()"></app-category-card>
 </div>
 <!-- <app-task-list></app-task-list> -->
-<router-outlet></router-outlet>
-
-<app-footer></app-footer>

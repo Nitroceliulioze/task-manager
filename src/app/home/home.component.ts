@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskInterface } from '../tasks/task-interface';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,12 +18,23 @@ export class HomeComponent {
   categoryTitle: string[] = [ 
     'Meetings', 'Birthdays', 'Tasks', "Test" ]
 
+    constructor (private router: Router) {}
+
   openCreateTask(): void {
     this.isCreateTaskOpen = true;
   }
 
+  closeDialog(): void {
+    this.isCreateTaskOpen = false;
+  }
+
+  onCloseDialog(): void {
+    this.isCreateTaskOpen = false;
+  }
+
   openTaskList(): void {
-    console.log('Open Tasks list');
+    this.router.navigate(['/tasks'])
+    console.log('open task')
   }
 
   openCategoryList(): void {

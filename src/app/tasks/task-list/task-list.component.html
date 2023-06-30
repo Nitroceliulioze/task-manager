@@ -1,1 +1,12 @@
+<div class="flex justify-end mx-4">
+    <app-button buttonText="View categories" (buttonAction)="openTaskList()"></app-button>
+    <app-button
+      class=""
+      (buttonAction)="openCreateTask()"
+      buttonIcon="fas fa-plus-circle"
+      buttonText="Create new task"
+      buttonColor="rgb(243 232 255)"
+    ></app-button>
+  </div>
+  <app-create-task *ngIf="isCreateTaskOpen" (closeDialog)="closeDialog()" (onCloseDialog)="closeDialog()"></app-create-task>
 <app-task (taskAction)="onTaskAcion()" *ngFor="let task of tasks" [task]="task"></app-task>
