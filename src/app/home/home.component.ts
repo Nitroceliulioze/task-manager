@@ -38,6 +38,6 @@ export class HomeComponent {
   }
 
   openCategoryList(): void {
-    console.log('open list tasks');
+    this.router.navigate(['/categories'])
   }
 }

@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,6 +12,8 @@ export class CategoryCardComponent {
   @Input() countListItems!: string;
   @Output() categoryCardAction = new EventEmitter;
 
+  constructor (private router: Router) {}
+  
   onClick(): void {
     this.categoryCardAction.emit()
   }

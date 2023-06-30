@@ -9,7 +9,7 @@ import { TaskInterface } from '../task-interface';
 })
 export class TaskComponent {
   @Input() task!: TaskInterface;
-  @Output() taskAction= new EventEmitter;
+  @Output() taskAction= new EventEmitter();
 
   onClick(): void {
     this.taskAction.emit()
