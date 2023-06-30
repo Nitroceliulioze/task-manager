@@ -10,7 +10,10 @@
   ></app-button>
 </div>
 <app-create-task *ngIf="isCreateTaskOpen"></app-create-task>
-<app-category-card (categoryCardAction)="openCategoryList()"></app-category-card>
+<div class="flex flex-wrap">
+
+  <app-category-card *ngFor="let item of categoryTitle" [categoryTitle]="item" countListItems={{tasks.length}} (categoryCardAction)="openCategoryList()"></app-category-card>
+</div>
 <!-- <app-task-list></app-task-list> -->
 <router-outlet></router-outlet>
 

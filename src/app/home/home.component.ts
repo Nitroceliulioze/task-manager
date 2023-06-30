@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskInterface } from '../tasks/task-interface';
-import { CategoryInterface } from '../tasks/category-interface';
+
 
 @Component({
   selector: 'app-home',
@@ -14,9 +14,9 @@ export class HomeComponent {
     { taskTitle: 'Task 2', taskDate: '03/17/2023' },
     { taskTitle: 'Task 3', taskDate: '01/17/2023' },
   ];
-  categoryCardInfo: CategoryInterface[] = [
-    { categoryTitle: 'Title 1', listItemsCount: 1 },
-  ];
+  categoryTitle: string[] = [ 
+    'Meetings', 'Birthdays', 'Tasks', "Test" ]
+
   openCreateTask(): void {
     this.isCreateTaskOpen = true;
   }
