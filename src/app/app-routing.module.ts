@@ -3,17 +3,25 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { CategoryTaskListComponent } from './tasks/category-task-list/category-task-list.component';
+import { CreateTaskComponent } from './tasks/create-task/create-task.component';
+import { CreateListComponent } from './tasks/create-list/create-list.component';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'tasks', component: TaskListComponent }, 
-  {path: 'categories', component: CategoryTaskListComponent, data: { categoryTitle: 'Category Title'} }, 
-  {path: '**', redirectTo: 'home', pathMatch: 'full'}
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'tasks', component: TaskListComponent },
+  { path: 'tasks/edit', component: CreateTaskComponent },
+  {
+    path: 'categories',
+    component: CategoryTaskListComponent,
+    data: { categoryTitle: 'Category Title' },
+  },
+  { path: 'categories/edit', component: CreateListComponent },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,38 +1,29 @@
-<!-- <div class="flex justify-center">
-  <h1 class="text-3xl text-center px-32 py-10 font-bold">
-    {{ categoryTitle }} 
-  </h1>
-  <i (click)="onClick()" class="fas fa-ellipsis-v cursor-pointer px-32 py-10"></i>
-</div>
-<div *ngIf="showDialogMenu" class="fixed inset-0 flex items-center justify-center ">
-    <div class="modal-overlay"></div>
-    <div class="bg-white z-20 m-0 rounded-3xl flex flex-col shadow">
-     <app-button class="text-xs m-0" buttonText="Edit the list" buttonIcon=""></app-button>
-     <app-button class="text-xs"  buttonText="Delete the list" buttonIcon=""></app-button>
-    </div>
-</div> -->
 <div class="flex justify-center">
   <div class="w-1/2 flex justify-between">
-    <h1 class="text-3xl text-center px-32 py-10 font-bold">
+    <h1 class="text-3xl text-center flex-2 px-32 py-10 font-bold">
       {{ categoryTitle }}
     </h1>
-    <div class="relative inline-block">
+    <div class="relative flex-1 text-right items-end w-full">
       <i
         (click)="onClick()"
-        class="fas fa-ellipsis-v cursor-pointer py-10 px-5"
+        class="fas fa-ellipsis-v cursor-pointer py-10 px-5 w-full"
       ></i>
       <div *ngIf="showDialogMenu">
         <div class="modal-overlay"></div>
-        <div class="absolute z-20 left-0 bg-white rounded-lg">
+        <div
+          class="absolute z-20 right-6 bottom-0 bg-white rounded-3xl flex flex-col items-end p-3"
+        >
           <app-button
             class="text-xs"
             buttonText="Edit the list"
-            buttonIcon=""
+            buttonIcon="fas fa-pen"
+            (buttonAction)="onEdit()"
           ></app-button>
           <app-button
             class="text-xs"
             buttonText="Delete the list"
-            buttonIcon=""
+            buttonIcon="fas fa-trash"
+            (buttonAction)="onDelete()"
           ></app-button>
         </div>
       </div>
