@@ -8,6 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class CreateTaskComponent {
   isCreateListOpen!: boolean;
   @Output() closeDialog = new EventEmitter();
+  // eslint-disable-next-line @angular-eslint/no-output-on-prefix
   @Output() onCloseDialog = new EventEmitter();
 
   openCreateList(): void {
@@ -20,7 +21,6 @@ export class CreateTaskComponent {
 
   closeCreateList(): void {
     this.onCloseDialog.emit();
-    
   }
   closeCreateTask(): void {
     this.closeDialog.emit();
