@@ -14,23 +14,37 @@ export class HomeComponent {
   isCreateTaskOpen = false;
   taskListView!: boolean;
   tasks: TaskInterface[] = [
-    { taskTitle: 'Task 1', taskDate: '08/17/2023', taskCategory: 'Meetings' },
-    { taskTitle: 'Task 2', taskDate: '03/17/2023', taskCategory: 'Birthdays' },
-    { taskTitle: 'Task 3', taskDate: '01/17/2023', taskCategory: 'Meetings' },
+    {
+      taskId: 1,
+      taskTitle: 'Task 1',
+      taskDate: '08/17/2023',
+      taskCategory: 'Meetings',
+    },
+    {
+      taskId: 2,
+      taskTitle: 'Task 2',
+      taskDate: '03/17/2023',
+      taskCategory: 'Birthdays',
+    },
+    {
+      taskId: 3,
+      taskTitle: 'Task 3',
+      taskDate: '01/17/2023',
+      taskCategory: 'Test',
+    },
   ];
-  categoryTitle: string[] = ['Meetings', 'Birthdays', 'Tasks', 'Test']; //reiktu pakeist i taskCategory tikriausiai
 
   constructor(private router: Router, private dialog: MatDialog) {}
 
   openCreateTask(): void {
     this.dialog.open(CreateTaskComponent, {
       data: {
+        taskId: 4,
         taskTitle: 'Buy a cake',
         taskDate: '',
         taskCategory: 'Birthdays',
       },
     });
-    // this.isCreateTaskOpen = true;
   }
 
   closeDialog(): void {

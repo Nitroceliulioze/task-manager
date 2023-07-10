@@ -14,8 +14,8 @@
 <app-create-task *ngIf="isCreateTaskOpen"></app-create-task>
 <div *ngIf="!taskListView" class="flex flex-wrap">
   <app-category-card
-    *ngFor="let item of categoryTitle"
-    [categoryTitle]="item"
+    *ngFor="let task of tasks"
+    [categoryTitle]="task.taskCategory"
     countListItems="{{ tasks.length }}"
     (categoryCardAction)="openCategoryList()"
   ></app-category-card>
