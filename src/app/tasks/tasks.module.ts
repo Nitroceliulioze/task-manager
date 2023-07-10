@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CreateListComponent } from './create-list/create-list.component';
 import { CategoryCardComponent } from './category-card/category-card.component';
 import { CategoryTaskListComponent } from './category-task-list/category-task-list.component';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -15,18 +16,15 @@ import { CategoryTaskListComponent } from './category-task-list/category-task-li
     CreateTaskComponent,
     CreateListComponent,
     CategoryCardComponent,
-    CategoryTaskListComponent
+    CategoryTaskListComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule
-  ],
+  imports: [CommonModule, SharedModule, MaterialModule],
   exports: [
     TaskComponent,
     TaskListComponent,
     CreateTaskComponent,
     CreateListComponent,
-    CategoryCardComponent
-  ]
+    CategoryCardComponent,
+  ],
 })
-export class TasksModule { }
+export class TasksModule {}

@@ -11,9 +11,9 @@ export class CategoryTaskListComponent {
   categoryTitle!: string;
   showDialogMenu = false;
   tasks: TaskInterface[] = [
-    { taskTitle: 'Task 1', taskDate: '08/17/2023' },
-    { taskTitle: 'Task 2', taskDate: '03/17/2023' },
-    { taskTitle: 'Task 3', taskDate: '01/17/2023' },
+    { taskTitle: 'Task 1', taskDate: '08/17/2023', taskCategory: 'Meetings' },
+    { taskTitle: 'Task 2', taskDate: '03/17/2023', taskCategory: 'Birthdays' },
+    { taskTitle: 'Task 3', taskDate: '01/17/2023', taskCategory: 'Meetings' },
   ];
   @Output() taskAction = new EventEmitter();
 

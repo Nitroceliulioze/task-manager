@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-list',
@@ -6,10 +7,17 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./create-list.component.css'],
 })
 export class CreateListComponent {
-  @Output() closeDialog = new EventEmitter();
+  constructor(
+    private dialog: MatDialog,
+    private ref: MatDialogRef<CreateListComponent>
+  ) {}
 
   onCloseDialog(): void {
-    this.closeDialog.emit();
-    console.log('close list')
+    this.ref.close();
+    console.log('close list');
+  }
+
+  openCreateListDialog() {
+    this.dialog.open(CreateListComponent, {});
   }
 }

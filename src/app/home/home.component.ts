@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { TaskInterface } from '../tasks/task-interface';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateListComponent } from '../tasks/create-list/create-list.component';
+import { CreateTaskComponent } from '../tasks/create-task/create-task.component';
 
 @Component({
   selector: 'app-home',
@@ -10,16 +13,23 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   isCreateTaskOpen = false;
   tasks: TaskInterface[] = [
-    { taskTitle: 'Task 1', taskDate: '08/17/2023' },
-    { taskTitle: 'Task 2', taskDate: '03/17/2023' },
-    { taskTitle: 'Task 3', taskDate: '01/17/2023' },
+    { taskTitle: 'Task 1', taskDate: '08/17/2023', taskCategory: 'Meetings' },
+    { taskTitle: 'Task 2', taskDate: '03/17/2023', taskCategory: 'Birthdays' },
+    { taskTitle: 'Task 3', taskDate: '01/17/2023', taskCategory: 'Meetings' },
   ];
-  categoryTitle: string[] = ['Meetings', 'Birthdays', 'Tasks', 'Test'];
+  categoryTitle: string[] = ['Meetings', 'Birthdays', 'Tasks', 'Test']; //reiktu pakeist i taskCategory tikriausiai
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   openCreateTask(): void {
-    this.isCreateTaskOpen = true;
+    this.dialog.open(CreateTaskComponent, {
+      data: {
+        taskTitle: 'Buy a cake',
+        taskDate: '',
+        taskCategory: 'Birthdays',
+      },
+    });
+    // this.isCreateTaskOpen = true;
   }
 
   closeDialog(): void {
@@ -37,5 +47,9 @@ export class HomeComponent {
 
   openCategoryList(): void {
     this.router.navigate(['/categories']);
+  }
+
+  openCreateListDialog() {
+    this.dialog.open(CreateListComponent, {});
   }
 }

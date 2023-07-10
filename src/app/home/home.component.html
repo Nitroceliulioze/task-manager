@@ -11,11 +11,7 @@
     buttonColor="rgb(243 232 255)"
   ></app-button>
 </div>
-<app-create-task
-  *ngIf="isCreateTaskOpen"
-  (closeDialog)="closeDialog()"
-  (onCloseDialog)="closeDialog()"
-></app-create-task>
+<app-create-task *ngIf="isCreateTaskOpen"></app-create-task>
 <div class="flex flex-wrap">
   <app-category-card
     *ngFor="let item of categoryTitle"
