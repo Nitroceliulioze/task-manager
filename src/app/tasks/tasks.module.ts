@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskComponent } from './task/task.component';
-import { TaskListComponent } from './task-list/task-list.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { SharedModule } from '../shared/shared.module';
 import { CreateListComponent } from './create-list/create-list.component';
@@ -12,7 +11,6 @@ import { MaterialModule } from '../material/material.module';
 @NgModule({
   declarations: [
     TaskComponent,
-    TaskListComponent,
     CreateTaskComponent,
     CreateListComponent,
     CategoryCardComponent,
@@ -21,7 +19,6 @@ import { MaterialModule } from '../material/material.module';
   imports: [CommonModule, SharedModule, MaterialModule],
   exports: [
     TaskComponent,
-    TaskListComponent,
     CreateTaskComponent,
     CreateListComponent,
     CategoryCardComponent,

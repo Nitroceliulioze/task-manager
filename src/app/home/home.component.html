@@ -1,18 +1,18 @@
 <div class="flex justify-end mr-32 p-6 gap-10">
   <app-button
-    buttonText="View all taks"
-    (buttonAction)="openTaskList()"
+    [buttonText]="!taskListView ? 'View all tasks' : 'View Categories'"
+    (buttonAction)="toggleTaskAndCategory()"
   ></app-button>
   <app-button
     class=""
     (buttonAction)="openCreateTask()"
-    buttonIcon="fas fa-plus-circle"
+    buttonIcon="add_circle"
     buttonText="Create new task"
     buttonColor="rgb(243 232 255)"
   ></app-button>
 </div>
 <app-create-task *ngIf="isCreateTaskOpen"></app-create-task>
-<div class="flex flex-wrap">
+<div *ngIf="!taskListView" class="flex flex-wrap">
   <app-category-card
     *ngFor="let item of categoryTitle"
     [categoryTitle]="item"
@@ -20,4 +20,10 @@
     (categoryCardAction)="openCategoryList()"
   ></app-category-card>
 </div>
-<!-- <app-task-list></app-task-list> -->
+<div *ngIf="taskListView">
+  <app-task
+    (taskAction)="onTaskAcion()"
+    *ngFor="let task of tasks"
+    [task]="task"
+  ></app-task>
+</div>

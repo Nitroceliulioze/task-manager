@@ -12,6 +12,7 @@ import { CreateTaskComponent } from '../tasks/create-task/create-task.component'
 })
 export class HomeComponent {
   isCreateTaskOpen = false;
+  taskListView!: boolean;
   tasks: TaskInterface[] = [
     { taskTitle: 'Task 1', taskDate: '08/17/2023', taskCategory: 'Meetings' },
     { taskTitle: 'Task 2', taskDate: '03/17/2023', taskCategory: 'Birthdays' },
@@ -51,5 +52,13 @@ export class HomeComponent {
 
   openCreateListDialog() {
     this.dialog.open(CreateListComponent, {});
+  }
+
+  toggleTaskAndCategory(): void {
+    this.taskListView = !this.taskListView;
+  }
+
+  onTaskAcion(): void {
+    console.log('Task Action clicked');
   }
 }

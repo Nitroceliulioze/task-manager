@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TaskInterface } from '../task-interface';
 
@@ -9,9 +9,6 @@ import { TaskInterface } from '../task-interface';
 })
 export class CreateTaskComponent implements OnInit {
   isCreateListOpen!: boolean;
-
-  // eslint-disable-next-line @angular-eslint/no-output-on-prefix
-  @Output() onCloseDialog = new EventEmitter();
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: TaskInterface[],
@@ -30,10 +27,6 @@ export class CreateTaskComponent implements OnInit {
 
   onSubmit(): void {
     console.log('save');
-  }
-
-  closeCreateList(): void {
-    this.onCloseDialog.emit();
   }
   closeCreateTask(): void {
     this.ref.close();
