@@ -54,12 +54,6 @@ export class HomeComponent {
   onCloseDialog(): void {
     this.isCreateTaskOpen = false;
   }
-
-  openTaskList(): void {
-    this.router.navigate(['/tasks']);
-    console.log('open task');
-  }
-
   openCategoryList(): void {
     this.router.navigate(['/categories']);
   }

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TaskInterface } from '../task-interface';
 import { Router } from '@angular/router';
 
@@ -9,21 +9,14 @@ import { Router } from '@angular/router';
 })
 export class TaskComponent {
   @Input() task!: TaskInterface;
-  @Output() taskAction = new EventEmitter();
-  showDialogMenu = false;
 
   constructor(private router: Router) {}
 
-  onClick() {
-    this.taskAction.emit();
-    this.showDialogMenu = !this.showDialogMenu;
-  }
-
   onEdit(): void {
-    this.router.navigate(['/tasks/edit']);
+    // this.router.navigate(['/tasks/edit']);
   }
   onDelete(): void {
-    console.log('delete list');
+    console.log('delete task');
   }
   onComplete(): void {
     console.log('complete task');

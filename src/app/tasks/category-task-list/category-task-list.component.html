@@ -1,39 +1,30 @@
 <div class="flex justify-center">
   <div class="w-1/2 flex justify-between">
-    <h1 class="text-3xl text-center flex-2 px-32 py-10 font-bold">
-      {{ categoryTitle }}
-    </h1>
-    <div class="relative flex-1 text-right items-end w-full">
-      <i
-        (click)="onClick()"
-        class="fas fa-ellipsis-v cursor-pointer py-10 px-5 w-full"
-      ></i>
-      <div *ngIf="showDialogMenu">
-        <div class="modal-overlay"></div>
-        <div
-          class="absolute z-20 right-6 bottom-0 bg-white rounded-3xl flex flex-col items-end p-3"
-        >
-          <app-button
-            class="text-xs"
-            buttonText="Edit the list"
-            buttonIcon="edit"
-            (buttonAction)="onEdit()"
-          ></app-button>
-          <app-button
-            class="text-xs"
-            buttonText="Delete the list"
-            buttonIcon="delete"
-            (buttonAction)="onDelete()"
-          ></app-button>
-        </div>
-      </div>
+    <h1 class="text-3xl text-center flex-2 px-32 py-10 font-bold">Title</h1>
+    <div class="w-1/2 text-right mr-5">
+      <mat-icon [matMenuTriggerFor]="menu" class="cursor-pointer py-10 w-full"
+        >more_vert</mat-icon
+      >
+      <mat-menu #menu="matMenu" xPosition="before">
+        <app-button
+          class="text-xs"
+          buttonText="Edit the list"
+          buttonIcon="edit"
+          (buttonAction)="onEdit()"
+        ></app-button>
+        <app-button
+          class="text-xs"
+          buttonText="Delete the list"
+          buttonIcon="delete"
+          (buttonAction)="onDelete()"
+        ></app-button>
+      </mat-menu>
     </div>
   </div>
 </div>
 
 <app-task
   class="px-32 py-10"
-  (taskAction)="onTaskAcion()"
   *ngFor="let task of tasks"
   [task]="task"
 ></app-task>

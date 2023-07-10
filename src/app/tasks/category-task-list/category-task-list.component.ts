@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { TaskInterface } from '../task-interface';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -8,8 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./category-task-list.component.css'],
 })
 export class CategoryTaskListComponent {
-  categoryTitle!: string;
-  showDialogMenu = false;
   tasks: TaskInterface[] = [
     {
       taskId: 1,
@@ -30,23 +28,13 @@ export class CategoryTaskListComponent {
       taskCategory: 'Meetings',
     },
   ];
-  @Output() taskAction = new EventEmitter();
 
   constructor(private route: ActivatedRoute, private router: Router) {
     // this.categoryTitle = this.route.snapshot.data['categoryTitle']; Cia turi buti observable kad perduotu data
   }
 
-  onTaskAcion(): void {
-    console.log('Task Action clicked');
-  }
-
-  onClick() {
-    this.taskAction.emit();
-    this.showDialogMenu = !this.showDialogMenu;
-  }
-
   onEdit(): void {
-    this.router.navigate(['/categories/edit']);
+    // this.router.navigate(['/categories/edit']);
   }
   onDelete(): void {
     console.log('delete list');
