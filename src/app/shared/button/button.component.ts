@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ButtonComponent {
 @Input() buttonText!: string;
 @Input() buttonColor!: string;
+@Input() buttonIcon!: string;
 @Output() buttonAction = new EventEmitter()
 
 
