@@ -11,22 +11,27 @@
         >cancel</mat-icon
       >
     </div>
-    <div mat-dialog-content>
-      <div class="flex flex-col">
-        <input
-          class="border-none m-3 rounded-md"
-          type="text"
-          placeholder="Enter List name here..."
-        />
+    <form [formGroup]="listForm" (ngSubmit)="saveList()">
+      <div mat-dialog-content>
+        <mat-form-field class="flex flex-col">
+          <mat-label></mat-label>
+          <input
+            formControlName="taskCategory"
+            matInput
+            class="border-none m-3 rounded-md"
+            type="text"
+            placeholder="Enter List name here..."
+          />
+        </mat-form-field>
       </div>
-    </div>
-    <div mat-dialog-actions>
-      <app-button
-        mat-dialog-close
-        class="m-auto cursor-pointer"
-        type="submit"
-        buttonText="Save this list"
-      ></app-button>
-    </div>
+      <div mat-dialog-actions>
+        <app-button
+          mat-dialog-close
+          class="m-auto cursor-pointer"
+          type="submit"
+          buttonText="Save this list"
+        ></app-button>
+      </div>
+    </form>
   </div>
 </div>

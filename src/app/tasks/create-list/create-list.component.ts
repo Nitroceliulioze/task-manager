@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-list',
@@ -8,23 +9,20 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 })
 export class CreateListComponent {
   constructor(
-    private dialog: MatDialog,
-    private ref: MatDialogRef<CreateListComponent>
+    private ref: MatDialogRef<CreateListComponent>,
+    private fb: FormBuilder
   ) {}
+
+  listForm = this.fb.group({
+    taskCategory: this.fb.control(''),
+  });
 
   onCloseDialog(): void {
     this.ref.close();
     console.log('close list');
   }
 
-  openCreateListDialog() {
-    this.dialog.open(CreateListComponent, {
-      data: {
-        taskId: 4,
-        taskTitle: 'Buy a cake',
-        taskDate: '',
-        taskCategory: 'Birthdays',
-      },
-    });
+  saveList() {
+    console.log(this.listForm.value);
   }
 }

@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TaskInterface } from '../tasks/task-interface';
+import { TasksService } from '../shared/services/tasks.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateListComponent } from '../tasks/create-list/create-list.component';
 import { CreateTaskComponent } from '../tasks/create-task/create-task.component';
 
 @Component({
@@ -10,30 +10,19 @@ import { CreateTaskComponent } from '../tasks/create-task/create-task.component'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   taskListView!: boolean;
-  tasks: TaskInterface[] = [
-    {
-      taskId: 1,
-      taskTitle: 'Task 1',
-      taskDate: '08/17/2023',
-      taskCategory: 'Meetings',
-    },
-    {
-      taskId: 2,
-      taskTitle: 'Task 2',
-      taskDate: '03/17/2023',
-      taskCategory: 'Birthdays',
-    },
-    {
-      taskId: 3,
-      taskTitle: 'Task 3',
-      taskDate: '01/17/2023',
-      taskCategory: 'Test',
-    },
-  ];
+  tasks: TaskInterface[] = [];
 
-  constructor(private router: Router, private dialog: MatDialog) {}
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    private taskService: TasksService
+  ) {}
+
+  ngOnInit(): void {
+    this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
+  }
 
   openCreateTask(): void {
     const _createTaskDialogContent = this.dialog.open(CreateTaskComponent, {

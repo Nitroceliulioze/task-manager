@@ -6,6 +6,7 @@ import {
 } from '@angular/material/dialog';
 import { TaskInterface } from '../task-interface';
 import { CreateListComponent } from '../create-list/create-list.component';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-create-task',
@@ -14,11 +15,19 @@ import { CreateListComponent } from '../create-list/create-list.component';
 })
 export class CreateTaskComponent implements OnInit {
   closeMessage = 'closed using directive';
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: TaskInterface[],
     private ref: MatDialogRef<CreateTaskComponent>,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private fb: FormBuilder
   ) {}
+
+  taskForm = this.fb.group({
+    taskTitle: this.fb.control(''),
+    taskDate: this.fb.control(''),
+    taskCategory: this.fb.control(''),
+  });
 
   tasks!: TaskInterface[];
   // = [
@@ -58,5 +67,8 @@ export class CreateTaskComponent implements OnInit {
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',
     });
+  }
+  saveTask() {
+    console.log(this.taskForm.value);
   }
 }

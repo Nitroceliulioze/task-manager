@@ -13,54 +13,63 @@
         >
       </div>
     </div>
-    <div mat-dialog-content class="flex flex-col">
-      <input
-        class="border-none my-3 rounded-md w-full"
-        type="text"
-        placeholder="Enter Task name here..."
-      />
-      <div class="bg-white my-3 rounded-md flex flex-col p-2 w-full">
-        Complete until:
-        <mat-form-field>
-          <mat-label>Date</mat-label>
-          <input matInput [matDatepicker]="picker" />
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+    <form [formGroup]="taskForm" (ngSubmit)="saveTask()">
+      <div mat-dialog-content class="flex flex-col">
+        <mat-form-field class="border-none my-3 rounded-md w-full">
+          <input
+            formControlName="taskTitle"
+            matInput
+            type="text"
+            placeholder="Enter Task name here..."
+          />
         </mat-form-field>
-      </div>
-      <div class="bg-white my-3 rounded-md flex flex-col p-2 w-full">
-        <h4>Add this task to the list:</h4>
-        <div class="flex">
-          <mat-form-field class="border-none text-sm font-bold w-32">
-            <mat-label>Select</mat-label>
-            <mat-select>
-              <!-- <mat-option *ngFor="let task of tasks" [value]="task">
+        <div class="bg-white my-3 rounded-md flex flex-col p-2 w-full">
+          Complete until:
+          <mat-form-field>
+            <mat-label>Date</mat-label>
+            <input
+              formControlName="taskDate"
+              matInput
+              [matDatepicker]="picker"
+            />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="bg-white my-3 rounded-md flex flex-col p-2 w-full">
+          <h4>Add this task to the list:</h4>
+          <div class="flex">
+            <mat-form-field class="border-none text-sm font-bold w-32">
+              <mat-label>List Name</mat-label>
+              <mat-select formControlName="taskCategory">
+                <!-- <mat-option *ngFor="let task of tasks" [value]="task">
                 {{ task.taskCategory }}
               </mat-option> -->
-              <mat-option value="Meetings">Meetings</mat-option>
-              <mat-option value="Birthdays">Birthdays</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <app-button
-            class="text-xs"
-            buttonText="Create new list"
-            buttonIcon="add_circle"
-            (buttonAction)="openCreateListDialog()"
-          ></app-button>
+                <mat-option value="Meetings">Meetings</mat-option>
+                <mat-option value="Birthdays">Birthdays</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <app-button
+              class="text-xs"
+              buttonText="Create new list"
+              buttonIcon="add_circle"
+              (buttonAction)="openCreateListDialog()"
+            ></app-button>
+          </div>
         </div>
       </div>
-    </div>
-    <div mat-dialog-actions>
-      <app-button
-        [mat-dialog-close]="closeMessage"
-        class="m-auto cursor-pointer"
-        type="submit"
-        buttonText="Save this task"
-      ></app-button>
-    </div>
+      <div mat-dialog-actions>
+        <app-button
+          [mat-dialog-close]="closeMessage"
+          class="m-auto cursor-pointer"
+          type="submit"
+          buttonText="Save this task"
+        ></app-button>
+      </div>
+    </form>
   </div>
 </div>
