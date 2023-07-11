@@ -1,5 +1,4 @@
 <div class="fixed inset-0 flex items-center justify-center">
-  <!-- <div class="modal-overlay"></div> -->
   <div class="bg-purple-100 z-30 rounded-3xl flex flex-col px-40 py-2 relative">
     <div class="flex justify-evenly">
       <h1 mat-dialog-title class="text-center text-xl font-bold">
@@ -34,29 +33,30 @@
         </mat-form-field>
       </div>
       <div class="bg-white my-3 rounded-md flex flex-col p-2 w-full">
-        Add this task to the list:
+        <h4>Add this task to the list:</h4>
         <div class="flex">
-          <select class="border-none text-sm font-bold w-28">
-            <option
-              *ngFor="let item of inputData"
-              taskCategory="inputData.taskCategory"
-            ></option>
-            <!-- <option>{{ inputData.taskCategory }}</option> -->
-            <option>Meetings</option>
-            <option>Birthdays</option>
-          </select>
+          <mat-form-field class="border-none text-sm font-bold w-32">
+            <mat-label>Select</mat-label>
+            <mat-select>
+              <!-- <mat-option *ngFor="let task of tasks" [value]="task">
+                {{ task.taskCategory }}
+              </mat-option> -->
+              <mat-option value="Meetings">Meetings</mat-option>
+              <mat-option value="Birthdays">Birthdays</mat-option>
+            </mat-select>
+          </mat-form-field>
           <app-button
             class="text-xs"
             buttonText="Create new list"
             buttonIcon="add_circle"
-            (buttonAction)="openCreateList()"
+            (buttonAction)="openCreateListDialog()"
           ></app-button>
         </div>
       </div>
     </div>
     <div mat-dialog-actions>
       <app-button
-        mat-dialog-close
+        [mat-dialog-close]="closeMessage"
         class="m-auto cursor-pointer"
         type="submit"
         buttonText="Save this task"
@@ -64,4 +64,3 @@
     </div>
   </div>
 </div>
-<app-create-list *ngIf="isCreateListOpen"></app-create-list>

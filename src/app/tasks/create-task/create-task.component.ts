@@ -1,6 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { TaskInterface } from '../task-interface';
+import { CreateListComponent } from '../create-list/create-list.component';
 
 @Component({
   selector: 'app-create-task',
@@ -8,28 +13,50 @@ import { TaskInterface } from '../task-interface';
   styleUrls: ['./create-task.component.css'],
 })
 export class CreateTaskComponent implements OnInit {
-  isCreateListOpen!: boolean;
-
+  closeMessage = 'closed using directive';
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: TaskInterface[],
-    private ref: MatDialogRef<CreateTaskComponent>
+    private ref: MatDialogRef<CreateTaskComponent>,
+    private dialog: MatDialog
   ) {}
 
-  inputData!: TaskInterface[];
+  tasks!: TaskInterface[];
+  // = [
+  //   {
+  //     taskId: 1,
+  //     taskTitle: 'Task 1',
+  //     taskDate: '08/17/2023',
+  //     taskCategory: 'Meetings',
+  //   },
+  //   {
+  //     taskId: 2,
+  //     taskTitle: 'Task 2',
+  //     taskDate: '03/17/2023',
+  //     taskCategory: 'Birthdays',
+  //   },
+  //   {
+  //     taskId: 3,
+  //     taskTitle: 'Task 3',
+  //     taskDate: '01/17/2023',
+  //     taskCategory: 'Test',
+  //   },
+  // ];
 
   ngOnInit(): void {
-    this.inputData = this.data;
-    console.log(this.inputData[0].taskCategory);
+    this.tasks = this.data;
+    console.log(this.tasks);
   }
-  openCreateList(): void {
-    this.isCreateListOpen = true;
-  }
-
   onSubmit(): void {
     console.log('save');
   }
   closeCreateTask(): void {
-    this.ref.close();
+    this.ref.close('Closed using function');
     console.log('close');
+  }
+  openCreateListDialog() {
+    this.dialog.open(CreateListComponent, {
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+    });
   }
 }

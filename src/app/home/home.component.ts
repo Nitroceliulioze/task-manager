@@ -36,7 +36,9 @@ export class HomeComponent {
   constructor(private router: Router, private dialog: MatDialog) {}
 
   openCreateTask(): void {
-    this.dialog.open(CreateTaskComponent, {
+    const _createTaskDialogContent = this.dialog.open(CreateTaskComponent, {
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
       data: {
         taskId: 4,
         taskTitle: 'Buy a cake',
@@ -44,14 +46,13 @@ export class HomeComponent {
         taskCategory: 'Birthdays',
       },
     });
+    _createTaskDialogContent.afterClosed().subscribe((item) => {
+      console.log(item);
+    });
   }
 
   openCategoryList(): void {
     this.router.navigate(['/categories']);
-  }
-
-  openCreateListDialog() {
-    this.dialog.open(CreateListComponent, {});
   }
 
   toggleTaskAndCategory(): void {

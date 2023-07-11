@@ -18,6 +18,13 @@ export class CreateListComponent {
   }
 
   openCreateListDialog() {
-    this.dialog.open(CreateListComponent, {});
+    this.dialog.open(CreateListComponent, {
+      data: {
+        taskId: 4,
+        taskTitle: 'Buy a cake',
+        taskDate: '',
+        taskCategory: 'Birthdays',
+      },
+    });
   }
 }
