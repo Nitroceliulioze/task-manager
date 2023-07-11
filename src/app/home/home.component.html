@@ -11,7 +11,7 @@
     buttonColor="rgb(243 232 255)"
   ></app-button>
 </div>
-<app-create-task *ngIf="isCreateTaskOpen"></app-create-task>
+
 <div *ngIf="!taskListView" class="flex flex-wrap">
   <app-category-card
     *ngFor="let task of tasks"

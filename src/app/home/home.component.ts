@@ -11,7 +11,6 @@ import { CreateTaskComponent } from '../tasks/create-task/create-task.component'
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  isCreateTaskOpen = false;
   taskListView!: boolean;
   tasks: TaskInterface[] = [
     {
@@ -47,13 +46,6 @@ export class HomeComponent {
     });
   }
 
-  closeDialog(): void {
-    this.isCreateTaskOpen = false;
-  }
-
-  onCloseDialog(): void {
-    this.isCreateTaskOpen = false;
-  }
   openCategoryList(): void {
     this.router.navigate(['/categories']);
   }
