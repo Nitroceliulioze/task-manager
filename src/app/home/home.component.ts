@@ -28,12 +28,6 @@ export class HomeComponent implements OnInit {
     const _createTaskDialogContent = this.dialog.open(CreateTaskComponent, {
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',
-      data: {
-        taskId: 4,
-        taskTitle: 'Buy a cake',
-        taskDate: '',
-        taskCategory: 'Birthdays',
-      },
     });
     _createTaskDialogContent.afterClosed().subscribe((item) => {
       console.log(item);
@@ -48,7 +42,11 @@ export class HomeComponent implements OnInit {
     this.taskListView = !this.taskListView;
   }
 
-  onTaskAcion(): void {
-    console.log('Task Action clicked');
+  deleteTask(task: TaskInterface): void {
+    this.taskService
+      .deleteTask(task)
+      .subscribe(
+        () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
+      );
   }
 }

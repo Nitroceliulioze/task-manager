@@ -21,8 +21,8 @@
 </div>
 <div *ngIf="taskListView">
   <app-task
-    (taskAction)="onTaskAcion()"
     *ngFor="let task of tasks"
     [task]="task"
+    (deleteTask)="deleteTask(task)"
   ></app-task>
 </div>
