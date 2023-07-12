@@ -29,4 +29,5 @@
   class="px-32 py-10"
   *ngFor="let task of tasks"
   [task]="task"
+  (deleteTask)="deleteTask(task)"
 ></app-task>

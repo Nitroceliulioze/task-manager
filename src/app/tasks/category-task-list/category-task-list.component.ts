@@ -15,9 +15,7 @@ export class CategoryTaskListComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private taskService: TasksService
-  ) {
-    // this.categoryTitle = this.route.snapshot.data['categoryTitle']; Cia turi buti observable kad perduotu data
-  }
+  ) {}
 
   ngOnInit(): void {
     this.taskService.getAllTasks().subscribe((tasks) => (this.tasks = tasks));
@@ -25,9 +23,17 @@ export class CategoryTaskListComponent implements OnInit {
   }
 
   onEdit(): void {
-    // this.router.navigate(['/categories/edit']);
+    // this.router.navigate(['/edit-category']);
   }
   onDelete(): void {
     console.log('delete list');
+  }
+
+  deleteTask(task: TaskInterface): void {
+    this.taskService
+      .deleteTask(task)
+      .subscribe(
+        () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
+      );
   }
 }

@@ -11,16 +11,20 @@ import { TasksService } from 'src/app/services/tasks.service';
 export class TaskComponent {
   @Input() task!: TaskInterface;
   @Output() deleteTask = new EventEmitter();
+  @Output() completeTask = new EventEmitter();
+  @Output() editTask = new EventEmitter();
 
   constructor(private router: Router, private taskService: TasksService) {}
 
   onEdit(): void {
+    this.editTask.emit();
     // this.router.navigate(['/tasks/edit']);
   }
   onDeleteTask(): void {
     this.deleteTask.emit();
   }
   onComplete(): void {
+    this.completeTask.emit();
     console.log('complete task');
   }
 }
