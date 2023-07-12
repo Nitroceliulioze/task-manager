@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskInterface } from '../task-interface';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TasksService } from 'src/app/shared/services/tasks.service';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-category-task-list',
@@ -20,7 +20,8 @@ export class CategoryTaskListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
+    this.taskService.getAllTasks().subscribe((tasks) => (this.tasks = tasks));
+    // cia turetu but get tasks by category ir pakurt nauja const categoryTitle kuri renderintu virsuje
   }
 
   onEdit(): void {

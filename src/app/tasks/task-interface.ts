@@ -3,4 +3,5 @@ export interface TaskInterface {
   taskTitle: string;
   taskDate: Date | string;
   taskCategory: string;
+  taskCompleted: boolean;
 }

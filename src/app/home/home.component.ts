@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskInterface } from '../tasks/task-interface';
-import { TasksService } from '../shared/services/tasks.service';
+import { TasksService } from '../services/tasks.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateTaskComponent } from '../tasks/create-task/create-task.component';
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
+    this.taskService.getAllTasks().subscribe((tasks) => (this.tasks = tasks));
   }
 
   openCreateTask(): void {
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   openCategoryList(): void {
-    this.router.navigate(['/categories']);
+    this.router.navigate(['/category']);
   }
 
   toggleTaskAndCategory(): void {

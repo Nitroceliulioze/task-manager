@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { TASKS } from 'src/app/tasks/mock-tasks';
 import { TaskInterface } from 'src/app/tasks/task-interface';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +11,7 @@ export class TasksService {
 
   constructor(private http: HttpClient) {}
 
-  getTasks(): Observable<TaskInterface[]> {
+  getAllTasks(): Observable<TaskInterface[]> {
     return this.http.get<TaskInterface[]>(this.apiURL);
   }
 }

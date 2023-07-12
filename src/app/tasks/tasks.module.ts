@@ -8,6 +8,7 @@ import { CategoryCardComponent } from './category-card/category-card.component';
 import { CategoryTaskListComponent } from './category-task-list/category-task-list.component';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     TaskComponent,
