@@ -11,7 +11,7 @@
     buttonColor="rgb(243 232 255)"
   ></app-button>
 </div>
-<div *ngIf="!taskListView" class="flex flex-wrap">
+<div *ngIf="!taskListView" class="flex flex-wrap pb-32">
   <app-category-card
     *ngFor="let task of tasks"
     [categoryTitle]="task.taskCategory"
@@ -19,7 +19,7 @@
     (categoryCardAction)="openCategoryList()"
   ></app-category-card>
 </div>
-<div *ngIf="taskListView">
+<div *ngIf="taskListView" class="pb-32">
   <app-task
     *ngFor="let task of tasks"
     [task]="task"

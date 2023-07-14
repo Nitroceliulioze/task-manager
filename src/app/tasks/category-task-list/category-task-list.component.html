@@ -24,12 +24,13 @@
     </div>
   </div>
 </div>
-
-<app-task
-  class="px-32 py-10"
-  *ngFor="let task of tasks"
-  [task]="task"
-  (deleteTask)="deleteTask(task)"
-  (completeTask)="completeTask(task)"
-  (editTask)="editTask()"
-></app-task>
+<div class="pb-32">
+  <app-task
+    class="px-32 py-10"
+    *ngFor="let task of tasks"
+    [task]="task"
+    (deleteTask)="deleteTask(task)"
+    (completeTask)="completeTask(task)"
+    (editTask)="editTask()"
+  ></app-task>
+</div>
