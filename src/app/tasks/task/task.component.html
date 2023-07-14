@@ -1,6 +1,8 @@
 <div class="border z-0 border-purple-100 rounded-lg m-auto w-1/2 mb-5">
   <div class="flex flex-row justify-between p-5">
-    <h1 class="font-semibold">{{ task.taskTitle }}</h1>
+    <h1 [ngClass]="{ completed: task.taskCompleted }" class="font-semibold">
+      {{ task.taskTitle }}
+    </h1>
     <div>
       <mat-icon [matMenuTriggerFor]="menu" class="cursor-pointer w-full"
         >more_vert</mat-icon
@@ -15,7 +17,7 @@
         <app-button
           class="text-xs"
           buttonText="Complete the task"
-          (buttonAction)="onComplete()"
+          (buttonAction)="onCompleteTask()"
         ></app-button>
         <app-button
           class="text-xs"

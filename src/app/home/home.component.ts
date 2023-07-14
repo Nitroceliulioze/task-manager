@@ -49,4 +49,9 @@ export class HomeComponent implements OnInit {
         () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
       );
   }
+
+  completeTask(task: TaskInterface): void {
+    task.taskCompleted = !task.taskCompleted;
+    this.taskService.taskCompleted(task).subscribe();
+  }
 }

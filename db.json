@@ -12,7 +12,7 @@
       "taskTitle": "Go eat",
       "taskDate": "03/17/2023",
       "taskCategory": "Birthdays",
-      "taskCompleted": false
+      "taskCompleted": true
     },
     {
       "id": 3,

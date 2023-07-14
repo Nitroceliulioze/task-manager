@@ -30,4 +30,5 @@
   *ngFor="let task of tasks"
   [task]="task"
   (deleteTask)="deleteTask(task)"
+  (completeTask)="completeTask(task)"
 ></app-task>

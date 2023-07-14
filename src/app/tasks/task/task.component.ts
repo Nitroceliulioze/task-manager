@@ -23,7 +23,7 @@ export class TaskComponent {
   onDeleteTask(): void {
     this.deleteTask.emit();
   }
-  onComplete(): void {
+  onCompleteTask(): void {
     this.completeTask.emit();
     console.log('complete task');
   }

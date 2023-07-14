@@ -36,4 +36,8 @@ export class CategoryTaskListComponent implements OnInit {
         () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
       );
   }
+
+  completeTask(task: TaskInterface): void {
+    console.log(task);
+  }
 }
