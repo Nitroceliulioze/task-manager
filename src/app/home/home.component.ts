@@ -54,4 +54,14 @@ export class HomeComponent implements OnInit {
     task.taskCompleted = !task.taskCompleted;
     this.taskService.taskCompleted(task).subscribe();
   }
+
+  editTask() {
+    const _createTaskDialogContent = this.dialog.open(CreateTaskComponent, {
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+    });
+    _createTaskDialogContent.afterClosed().subscribe((task) => {
+      console.log(task);
+    });
+  }
 }

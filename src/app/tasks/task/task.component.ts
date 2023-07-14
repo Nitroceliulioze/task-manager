@@ -18,7 +18,6 @@ export class TaskComponent {
 
   onEdit(): void {
     this.editTask.emit();
-    // this.router.navigate(['/tasks/edit']);
   }
   onDeleteTask(): void {
     this.deleteTask.emit();
