@@ -13,9 +13,8 @@
 </div>
 <div *ngIf="!taskListView" class="flex flex-wrap pb-32">
   <app-category-card
-    *ngFor="let task of tasks"
-    [categoryTitle]="task.taskCategory"
-    countListItems="{{ tasks.length }}"
+    *ngFor="let category of categories"
+    [category]="category"
     (categoryCardAction)="openCategoryList()"
   ></app-category-card>
 </div>

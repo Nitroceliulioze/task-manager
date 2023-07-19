@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { CategoryInterface } from '../category-interface';
 
 @Component({
   selector: 'app-category-card',
@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./category-card.component.css'],
 })
 export class CategoryCardComponent {
-  @Input() categoryTitle!: string;
-  @Input() countListItems!: string;
-  @Output() categoryCardAction = new EventEmitter;
+  @Input() category!: CategoryInterface;
 
-  constructor (private router: Router) {}
-  
+  @Output() categoryCardAction = new EventEmitter();
+
+  constructor(private router: Router) {}
+
   onClick(): void {
-    this.categoryCardAction.emit()
+    this.categoryCardAction.emit();
   }
 }
