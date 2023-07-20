@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateTaskComponent } from '../tasks/create-task/create-task.component';
 import { CategoryInterface } from '../tasks/category-interface';
 import { CategoryService } from '../services/category.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +16,12 @@ import { CategoryService } from '../services/category.service';
 export class HomeComponent implements OnInit {
   taskListView!: boolean;
   filter = '';
-  tasks: TaskInterface[] = [];
   categories: CategoryInterface[] = [];
+  isCategoryOpen = false;
   category!: CategoryInterface;
+  selectedCategoryTasks: TaskInterface[] = [];
+  selectedCategoryId: number | null = null;
+  selectedCategory: CategoryInterface | null = null;
 
   constructor(
     private router: Router,
@@ -27,12 +31,10 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.taskService.getAllTasks().subscribe((tasks) => (this.tasks = tasks));
-    console.log(this.tasks);
-    this.categoryService
-      .getAllCategories()
-      .subscribe((categories) => (this.categories = categories));
-    console.log(this.categories);
+    this.categoryService.getAllCategories().subscribe((categories) => {
+      this.categories = categories;
+      console.log(this.categories);
+    });
   }
 
   openCreateTask(): void {
@@ -45,11 +47,30 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  openCategoryList(): void {
+  openCategoryList(category: CategoryInterface): void {
     // this.filter = this.category.categoryTitle;
-    this.router.navigate(['/category']);
+    if (category.id !== undefined) {
+      this.isCategoryOpen = true;
+      this.selectedCategory = category;
+      this.getTasksForSelectedCategory(category.id);
+    }
   }
 
+  getTasksForSelectedCategory(categoryId: number): void {
+    this.categoryService.getTasksForCategory(categoryId).subscribe((tasks) => {
+      if (this.selectedCategory) this.selectedCategory.tasks = tasks;
+    });
+  }
+
+  getCurrentCategory(categoryId: number): void {
+    this.selectedCategoryId = categoryId;
+  }
+
+  isCategorySelected(categoryId: number | undefined): boolean {
+    return (
+      this.selectedCategoryId !== null && this.selectedCategoryId === categoryId
+    );
+  }
   // getFilteredCategories() {
   //   return this.filter === ''
   //     ? this.categories
@@ -63,17 +84,18 @@ export class HomeComponent implements OnInit {
     this.taskListView = !this.taskListView;
   }
 
-  deleteTask(task: TaskInterface): void {
-    this.taskService
-      .deleteTask(task)
-      .subscribe(
-        () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
-      );
+  deleteTask(): void {
+    // this.categoryService
+    //   .deleteTask(task)
+    //   .subscribe(
+    //     () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
+    //   );
+    console.log('task is deleted');
   }
 
-  completeTask(task: TaskInterface): void {
-    task.taskCompleted = !task.taskCompleted;
-    this.taskService.taskCompleted(task).subscribe();
+  completeTask(): void {
+    // this.category.tasks.taskCompleted = !task.tasks.taskCompleted;
+    // this.taskService.taskCompleted(task).subscribe();
   }
 
   editTask() {

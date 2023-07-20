@@ -1,29 +1,36 @@
-<div class="flex justify-end mr-32 p-6 gap-10">
-  <app-button
-    [buttonText]="!taskListView ? 'View all tasks' : 'View Categories'"
-    (buttonAction)="toggleTaskAndCategory()"
-  ></app-button>
-  <app-button
-    class=""
-    (buttonAction)="openCreateTask()"
-    buttonIcon="add_circle"
-    buttonText="Create new task"
-    buttonColor="rgb(243 232 255)"
-  ></app-button>
+<div *ngIf="!isCategoryOpen">
+  <div class="flex justify-end mr-32 p-6 gap-10">
+    <app-button
+      [buttonText]="!taskListView ? 'View all tasks' : 'View Categories'"
+      (buttonAction)="toggleTaskAndCategory()"
+    ></app-button>
+    <app-button
+      class=""
+      (buttonAction)="openCreateTask()"
+      buttonIcon="add_circle"
+      buttonText="Create new task"
+      buttonColor="rgb(243 232 255)"
+    ></app-button>
+  </div>
+  <div *ngIf="!taskListView" class="flex flex-wrap pb-32">
+    <app-category-card
+      *ngFor="let category of categories"
+      [category]="category"
+      (categoryCardAction)="openCategoryList(category)"
+    ></app-category-card>
+  </div>
+  <div *ngIf="taskListView" class="pb-32">
+    <div *ngFor="let category of categories">
+      <app-task *ngFor="let task of category.tasks" [task]="task"></app-task>
+    </div>
+  </div>
 </div>
-<div *ngIf="!taskListView" class="flex flex-wrap pb-32">
-  <app-category-card
-    *ngFor="let category of categories"
-    [category]="category"
-    (categoryCardAction)="openCategoryList()"
-  ></app-category-card>
-</div>
-<div *ngIf="taskListView" class="pb-32">
-  <app-task
-    *ngFor="let task of tasks"
-    [task]="task"
-    (deleteTask)="deleteTask(task)"
-    (completeTask)="completeTask(task)"
-    (editTask)="editTask()"
-  ></app-task>
+<div *ngIf="isCategoryOpen">
+  <ng-container *ngIf="selectedCategory">
+    <app-category-task-list [categoryTitle]="selectedCategory.categoryTitle">
+      <div *ngFor="let task of selectedCategory.tasks">
+        <app-task [task]="task"></app-task>
+      </div>
+    </app-category-task-list>
+  </ng-container>
 </div>

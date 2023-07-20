@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CreateTaskComponent,
     CreateListComponent,
     CategoryCardComponent,
+    CategoryTaskListComponent,
   ],
 })
 export class TasksModule {}

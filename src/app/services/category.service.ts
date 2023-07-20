@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CategoryInterface } from '../tasks/category-interface';
 import { Observable } from 'rxjs';
+import { TaskInterface } from '../tasks/task-interface';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,8 +22,23 @@ export class CategoryService {
     return this.http.get<CategoryInterface[]>(this.apiURL);
   }
 
-  deleteCategory(category: CategoryInterface): Observable<CategoryInterface> {
-    const url = `${this.apiURL}/${category.id}`;
+  getTasksForCategory(id: number): Observable<TaskInterface[]> {
+    const url = `${this.apiURL}/${id}/tasks`;
+    return this.http.get<TaskInterface[]>(url);
+  }
+
+  deleteCategory(id: number): Observable<CategoryInterface> {
+    const url = `${this.apiURL}/${id}`;
     return this.http.delete<CategoryInterface>(url);
+  }
+
+  deleteTask(task: CategoryInterface): Observable<CategoryInterface> {
+    const url = `${this.apiURL}/${task.id}`;
+    return this.http.delete<CategoryInterface>(url);
+  }
+
+  taskCompleted(task: CategoryInterface): Observable<CategoryInterface> {
+    const url = `${this.apiURL}/${task.id}`;
+    return this.http.put<CategoryInterface>(url, task, httpOptions);
   }
 }

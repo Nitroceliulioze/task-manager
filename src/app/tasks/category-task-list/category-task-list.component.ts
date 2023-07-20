@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskInterface } from '../task-interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreateListComponent } from '../create-list/create-list.component';
@@ -13,65 +13,55 @@ import { TasksService } from 'src/app/services/tasks.service';
   templateUrl: './category-task-list.component.html',
   styleUrls: ['./category-task-list.component.css'],
 })
-export class CategoryTaskListComponent implements OnInit {
-  categories: CategoryInterface[] = [];
-  category!: CategoryInterface;
-  tasks: TaskInterface[] = [];
+export class CategoryTaskListComponent {
+  @Input() categoryTitle!: string;
+  @Output() editCategoryName = new EventEmitter();
+  @Output() deleteCategory = new EventEmitter();
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private dialog: MatDialog,
-    private taskService: TasksService,
-    private categoryService: CategoryService
-  ) {}
+  // onEdit(): void {
+  //   this.dialog.open(CreateListComponent, {
+  //     enterAnimationDuration: '500ms',
+  //     exitAnimationDuration: '500ms',
+  //   });
+  // }
 
-  ngOnInit(): void {
-    this.categoryService
-      .getAllCategories()
-      .subscribe((categories) => (this.categories = categories));
-    // cia turetu but get tasks by category ir pakurt nauja const categoryTitle kuri renderintu virsuje
-    console.log(this.categories);
+  onEdit() {
+    this.editCategoryName.emit();
+  }
+  // onDelete(category: CategoryInterface): void {
+  //   this.categoryService
+  //     .deleteCategory(category)
+  //     .subscribe(
+  //       () =>
+  //         (this.categories = this.categories.filter(
+  //           (c) => c.id !== this.category.id
+  //         ))
+  //     );
+  // }
+  onDelete() {
+    this.deleteCategory.emit();
   }
 
-  onEdit(): void {
-    this.dialog.open(CreateListComponent, {
-      enterAnimationDuration: '500ms',
-      exitAnimationDuration: '500ms',
-    });
-  }
+  // deleteTask(task: TaskInterface): void {
+  //   this.taskService
+  //     .deleteTask(task)
+  //     .subscribe(
+  //       () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
+  //     );
+  // }
 
-  onDelete(category: CategoryInterface): void {
-    this.categoryService
-      .deleteCategory(category)
-      .subscribe(
-        () =>
-          (this.categories = this.categories.filter(
-            (c) => c.id !== this.category.id
-          ))
-      );
-  }
+  // completeTask(task: TaskInterface): void {
+  //   task.taskCompleted = !task.taskCompleted;
+  //   this.taskService.taskCompleted(task).subscribe();
+  // }
 
-  deleteTask(task: TaskInterface): void {
-    this.taskService
-      .deleteTask(task)
-      .subscribe(
-        () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
-      );
-  }
-
-  completeTask(task: TaskInterface): void {
-    task.taskCompleted = !task.taskCompleted;
-    this.taskService.taskCompleted(task).subscribe();
-  }
-
-  editTask() {
-    const _createTaskDialogContent = this.dialog.open(CreateTaskComponent, {
-      enterAnimationDuration: '500ms',
-      exitAnimationDuration: '500ms',
-    });
-    _createTaskDialogContent.afterClosed().subscribe((task) => {
-      console.log(task);
-    });
-  }
+  // editTask() {
+  //   const _createTaskDialogContent = this.dialog.open(CreateTaskComponent, {
+  //     enterAnimationDuration: '500ms',
+  //     exitAnimationDuration: '500ms',
+  //   });
+  //   _createTaskDialogContent.afterClosed().subscribe((task) => {
+  //     console.log(task);
+  //   });
+  // }
 }
