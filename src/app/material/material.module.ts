@@ -1,0 +1,42 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMenuModule,
+    MatSelectModule,
+  ],
+  exports: [
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMenuModule,
+    MatSelectModule,
+  ],
+})
+export class MaterialModule {}

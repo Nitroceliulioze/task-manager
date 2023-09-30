@@ -1,0 +1,32 @@
+<div class="border z-0 border-purple-100 rounded-lg m-auto w-1/2 mb-5">
+  <div class="flex flex-row justify-between p-5">
+    <h1 [ngClass]="{ completed: task.taskCompleted }" class="font-semibold">
+      {{ task.taskTitle }}
+    </h1>
+    <div>
+      <mat-icon [matMenuTriggerFor]="menu" class="cursor-pointer w-full"
+        >more_vert</mat-icon
+      >
+      <mat-menu #menu="matMenu" xPosition="before">
+        <app-button
+          class="text-xs"
+          buttonText="Edit the task"
+          buttonIcon="edit"
+          (buttonAction)="onEdit()"
+        ></app-button>
+        <app-button
+          class="text-xs"
+          buttonText="Complete the task"
+          (buttonAction)="onCompleteTask()"
+        ></app-button>
+        <app-button
+          class="text-xs"
+          buttonText="Delete the task"
+          buttonIcon="delete"
+          (buttonAction)="onDeleteTask()"
+        ></app-button>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="flex flex-col px-5 pb-5">{{ task.taskDate }}</div>
+</div>

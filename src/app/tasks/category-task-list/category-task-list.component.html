@@ -1,0 +1,36 @@
+<div class="flex justify-center">
+  <div class="w-1/2 flex justify-between">
+    <h1 class="text-3xl text-center flex-2 px-32 py-10 font-bold">
+      Category title
+    </h1>
+    <div class="w-1/2 text-right mr-5">
+      <mat-icon [matMenuTriggerFor]="menu" class="cursor-pointer py-10 w-full"
+        >more_vert</mat-icon
+      >
+      <mat-menu #menu="matMenu" xPosition="before">
+        <app-button
+          class="text-xs"
+          buttonText="Edit the list"
+          buttonIcon="edit"
+          (buttonAction)="onEdit()"
+        ></app-button>
+        <app-button
+          class="text-xs"
+          buttonText="Delete the list"
+          buttonIcon="delete"
+          (buttonAction)="onDelete(category)"
+        ></app-button>
+      </mat-menu>
+    </div>
+  </div>
+</div>
+<div class="pb-32">
+  <app-task
+    class="px-32 py-10"
+    *ngFor="let task of tasks"
+    [task]="task"
+    (deleteTask)="deleteTask(task)"
+    (completeTask)="completeTask(task)"
+    (editTask)="editTask()"
+  ></app-task>
+</div>
